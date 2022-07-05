@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Noto+Serif+Display:wght@200;400;700&display=swap");
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
+
+body {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    color: white;
+    width: 100%;
+    min-height: 100vh;
+}
+
+#root {
+    min-height: 100%;
+}
+
+.nav-panel {
+    width: 300px;
+    background-color: #163838;
+    display: flex;
+    flex-direction: column;
+    font-family: "Cutive Mono";
+    transition: 1s;
+}
+
+.nav-panel p {
+    margin-left: 2rem;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.seal {
+    width: 10rem;
+    margin: 0 auto;
+}
+
+.content {
+    flex-grow: 1;
+    background-color: #2b5554;
+    background-image: url("/images/mi6-seal-bg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: auto;
+    overflow: auto;
+
+    .welcome {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        margin: 2em;
+        color: black;
+    }
+}
+
+.nav-control {
+    position: absolute;
+    top: 2rem;
+    left: 300px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-control button {
+    border-width: 0;
+    background-color: #163838;
+    color: white;
+    border-radius: 0 0.5rem 0.5rem 0;
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.5rem;
+    transition: 1s;
+}
+
+.nav-panel.hidden {
+    width: 0;
+}
+
+.nav-panel.hidden .nav-control {
+    left: 0;
+}
+
+.person-form.hidden {
+    display: none;
+}
+
+.person-form {
+    display: block;
+}
