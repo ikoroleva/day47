@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\MissionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,3 +21,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/people-of-interest',  [PersonController::class, 'index']);
+
+Route::get('/missions/{path?}',  [MissionController::class, 'app'])->where('path', '.*');

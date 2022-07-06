@@ -23,5 +23,7 @@ Route::get('/statuses', [App\Http\Controllers\Api\StatusController::class, 'inde
 
 
 Route::get('/people-of-interest', [App\Http\Controllers\Api\PersonController::class, 'getPeopleByStatus']);
-
 Route::post('/people-of-interest/{id}/edit', [App\Http\Controllers\Api\PersonController::class, 'edit']);
+
+//missions api
+Route::post('/missions/create', [App\Http\Controllers\Api\MissionController::class, 'store']);

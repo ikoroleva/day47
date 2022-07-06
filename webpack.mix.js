@@ -39,6 +39,7 @@ mix
     .version();
 mix.sass("resources/css/style.scss", "public/css");
 mix.js("resources/js/people-of-interest.js", "public/js").react();
+mix.js("resources/js/missions.js", "public/js").react();
 
 // ADD ASSETS TO COMPILE HERE:
 

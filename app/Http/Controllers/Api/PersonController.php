@@ -36,5 +36,7 @@ class PersonController extends Controller
         $person->occupation = $request->input('occupation');
 
         $person->save();
+
+        return ['status' => 'success'];
     }
 }

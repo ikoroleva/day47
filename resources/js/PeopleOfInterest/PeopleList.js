@@ -1,25 +1,28 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import PersonEdit from "./PersonEdit";
+import PersonEditForm from "./PersonEditForm";
 
 export default function PeopleList({ selected_status }) {
-    const [data, setData] = useState(null);
 
+    const [data, setData] = useState(null);
     const [values, setValues] = useState({
         name: '',
         occupation: '',
-        hidden: true,
         id: ''
     });
 
-    const [updated, setUpdated] = useState(0);
+    const [isHidden, setIsHidden] = useState(true);
+
+    const [needUpdate, setNeedUpdate] = useState(false);
+
 
     const loadPeople = async () => {
         try {
             const response = await axios.get('api/people-of-interest' + '?status=' + encodeURIComponent(selected_status));
             console.log(response.data);
             setData(response.data);
+            setNeedUpdate(false);
 
         } catch (error) {
             console.log(error); // information about the error
@@ -31,12 +34,19 @@ export default function PeopleList({ selected_status }) {
 
     useEffect(() => {
         loadPeople();
-    }, [selected_status, updated]);
+    }, [selected_status, needUpdate]);
 
     const handleClick = (e) => {
 
-        //console.log(e);
-        setValues(e);
+
+        setValues(
+            {
+                name: e.target.getAttribute("personName"),
+                occupation: e.target.getAttribute("personOccupation"),
+                id: e.target.getAttribute("personId")
+            });
+
+        setIsHidden(false);
 
     }
 
@@ -45,7 +55,13 @@ export default function PeopleList({ selected_status }) {
     ) : (
 
         <div style={{ margin: "3em" }}>
-            <PersonEdit values={values} setValues={setValues} updated={updated} setUpdated={setUpdated} />
+            <PersonEditForm
+                values={values}
+                setValues={setValues}
+                setNeedUpdate={setNeedUpdate}
+                isHidden={isHidden}
+                setIsHidden={setIsHidden}
+            />
             {data.map((person) => {
                 return (
                     <>
@@ -60,14 +76,9 @@ export default function PeopleList({ selected_status }) {
                                 //form - value={person.name}
                             })}
                         </ul>
-                        <button
+                        <button personName={person.name} personOccupation={person.occupation} isHidden={false} personId={person.id}
                             onClick={(e) => {
-                                handleClick({
-                                    name: person.name,
-                                    occupation: person.occupation,
-                                    hidden: false,
-                                    id: person.id
-                                })
+                                handleClick(e)
                             }}
                         >Edit</button>
                         {/* {console.log(person)} */}
