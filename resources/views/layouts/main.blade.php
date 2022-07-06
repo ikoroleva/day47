@@ -15,7 +15,7 @@
   </head>
   <body>
     <div class="nav-panel">
-      <img class="seal" src="images/mi6-seal.png" alt="MI6 Seal" />
+      <img class="seal" src="/images/mi6-seal.png" alt="MI6 Seal" />
       <p> <a href="/"> Home </a></p>
       <p> <a href="/people-of-interest"> People of Interest </a></p>
       <p> <a href="/missions"> Missions </a></p>

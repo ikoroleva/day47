@@ -63,14 +63,20 @@ nav a {
     background-size: contain;
     height: auto;
     overflow: auto;
+    padding: 1rem;
 
     .welcome {
         display: flex;
         flex-direction: column;
         height: 100%;
         justify-content: center;
-        margin: 2em;
-        color: black;
+        align-items: center;
+
+
+        h1 {
+            margin: 2em;
+            color: white;
+        }
     }
 }
 
